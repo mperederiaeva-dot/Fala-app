@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fala Português — А1-А2</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        :root {
+            --bg: var(--tg-theme-bg-color, #f4f6f9);
+            --text: var(--tg-theme-text-color, #1c1c1e);
+            --card: var(--tg-theme-secondary-bg-color, #ffffff);
+            --accent: #009c3b;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 16px;
+            padding-bottom: 80px;
+        }
+        .header {
+            background: linear-gradient(135deg, #009c3b, #006827);
+            color: white;
+            padding: 18px;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 12px rgba(0,156,59,0.2);
+        }
+        .header h1 { margin: 0; font-size: 20px; }
+        .header p { margin: 6px 0 0; font-size: 13px; opacity: 0.9; }
+        
+        .tabs {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+        }
+        .tab-btn {
+            background: var(--card);
+            color: var(--text);
+            border: 1px solid rgba(0,0,0,0.08);
+            padding: 10px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .tab-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .grammar-box {
+            border-left: 4px solid var(--accent);
+            background: rgba(0, 156, 59, 0.08);
+            padding: 12px;
+            border-radius: 0 12px 12px 0;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        .word-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .word-item:last-child { border-bottom: none; }
+        .pt-word { font-size: 16px; font-weight: 700; color: var(--accent); }
+        .ru-
