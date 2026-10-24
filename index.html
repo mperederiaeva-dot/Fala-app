@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Fala Português — А1-А2</title>
+    <title>Fala Português — Уровень А1</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         :root {
@@ -30,6 +30,7 @@
         }
         .header h1 { margin: 0; font-size: 20px; }
         .header p { margin: 6px 0 0; font-size: 13px; opacity: 0.9; }
+        
         .tabs {
             display: flex;
             gap: 8px;
@@ -78,6 +79,7 @@
         }
         .word-item:last-child { border-bottom: none; }
         .pt-word { font-size: 16px; font-weight: 700; color: var(--accent); }
+        .transcription { font-size: 13px; color: #555; font-style: italic; }
         .ru-word { font-size: 14px; opacity: 0.8; margin-top: 2px; }
         .speak-btn {
             background: #e8f5e9;
@@ -115,13 +117,17 @@
 <body>
 
     <div class="header">
-        <h1>🇧🇷 Fala Português (A1–A2)</h1>
-        <p>Интерактивный курс: грамматика, темы и произношение</p>
+        <h1>🇧🇷 Fala Português (Уровень А1)</h1>
+        <p>Базовый курс: грамматика, словарь и озвучка pt-BR</p>
     </div>
 
+    <!-- Навигация -->
     <div class="tabs" id="tabs"></div>
+
+    <!-- Контент -->
     <div id="content"></div>
 
+    <!-- Озвучка любой фразы -->
     <div class="card">
         <strong>🎧 Озвучить любую фразу (pt-BR):</strong>
         <div class="custom-tts">
@@ -136,52 +142,62 @@
 
         const modules = [
             {
-                tab: "1. О себе и Числа",
-                title: "Модуль 1: Знакомство и счет",
-                grammar: "<b>Грамматика А1:</b><br>• <b>Ser</b> (постоянное): <i>Eu sou</i> (Я есть), <i>Você é</i> (Ты/Вы есть).<br>• <b>Estar</b> (временное): <i>Eu estou bem</i> (Я в порядке).<br>• <b>Отрицание:</b> ставим <b>não</b> перед глаголом.",
+                tab: "1. База и О себе",
+                title: "Модуль 1: Местоимения, Ser, Estar и Знакомство",
+                grammar: `<b>Грамматика А1 (База):</b><br>
+• <b>Местоимения:</b> <i>eu</i> (э́у — я), <i>você</i> (восэ́ — ты/Вы), <i>ele/ela</i> (э́ли/э́ла — он/она).<br>
+• <b>SER (постоянное):</b> <i>sou</i> (соу — я есть), <i>é</i> (э — он/она есть).<br>
+• <b>ESTAR (временное, место):</b> <i>estou</i> (эшто́у — я нахожусь), <i>está</i> (эшта́ — он/она находится).<br>
+• <b>Отрицание:</b> <b>não</b> (на̃́у) ставится перед глаголом.`,
                 phrases: [
-                    { pt: "Olá, tudo bem?", ru: "Привет, всё хорошо?" },
-                    { pt: "Eu sou da Rússia", ru: "Я из России" },
-                    { pt: "Eu moro em Curitiba", ru: "Я живу в Куритибе" },
-                    { pt: "Eu não falo muito bem ainda", ru: "Я еще говорю не очень хорошо" },
-                    { pt: "Um, dois, três, quatro, cinco", ru: "1, 2, 3, 4, 5" },
-                    { pt: "Seis, sete, oito, nove, dez", ru: "6, 7, 8, 9, 10" }
+                    { pt: "Olá! Eu sou da Rússia.", tr: "ола́! э́у соу да ру́сия", ru: "Привет! Я из России." },
+                    { pt: "Eu estou bem, obrigado(a).", tr: "э́у што́у бэйн, обраги́ду" },
+                    { pt: "Como você se chama?", tr: "ко́му восэ́ се ша́ма?", ru: "Как тебя зовут?" },
+                    { pt: "Eu não falo muito bem.", tr: "э́у на̃́у фа́лу му́йту бэйн", ru: "Я не говорю очень хорошо." },
+                    { pt: "Pode falar mais devagar?", tr: "по́де фала́р ма́ис девага́р?", ru: "Можете говорить медленнее?" }
                 ]
             },
             {
-                tab: "2. Время и День",
-                title: "Модуль 2: Время и расписание",
-                grammar: "<b>Грамматика А1-А2:</b><br>• Настоящее время: <i>Eu trabalho</i> (я работаю), <i>Você trabalha</i>.<br>• Ближайшее будущее: глагол <b>Ir + инфинитив</b> (<i>Eu vou comprar</i> — я собираюсь купить).",
+                tab: "2. Дом и Семья",
+                title: "Модуль 2: Семья, дом и глагол TER",
+                grammar: `<b>Грамматика А1 (Иметь и Род):</b><br>
+• <b>TER (иметь):</b> <i>tenho</i> (тэ́нью — у меня есть).<br>
+• <b>Род и артикли:</b> <b>o</b> (мужской), <b>a</b> (женский).<br>
+• <b>Множественное число:</b> добавление -s (например, <i>casa</i> — <i>casas</i>).<br>
+• <b>Предлоги:</b> <i>em</i> (в/на), <i>de</i> (из/от), <i>para</i> (для/в направлении).`,
                 phrases: [
-                    { pt: "Que horas são?", ru: "Который час?" },
-                    { pt: "São duas horas da tarde", ru: "Сейчас два часа дня" },
-                    { pt: "Hoje de manhã", ru: "Сегодня утром" },
-                    { pt: "Amanhã eu vou estudar", ru: "Завтра я буду учиться" },
-                    { pt: "Segunda-feira, terça-feira", ru: "Понедельник, вторник" }
+                    { pt: "Eu tenho uma família.", tr: "э́у тэ́нью у́ма фами́лия", ru: "У меня есть семья." },
+                    { pt: "Meu filho, minha casa.", tr: "ме́у фи́лью, ми́нья ка́за", ru: "Мой сын, мой дом." },
+                    { pt: "Nós moramos em Curitiba.", tr: "но́ш мора́муш эйн курити́ба", ru: "Мы живем в Куритибе." },
+                    { pt: "Onde fica o meu apartamento?", tr: "о́нджи фи́ка о ме́у апартаме́нту?", ru: "Где находится моя квартира?" }
                 ]
             },
             {
-                tab: "3. Рынок и Покупки",
-                title: "Модуль 3: Супермаркет и предлоги",
-                grammar: "<b>Грамматика А1-А2:</b><br>• Артикли: <b>o / a</b> (опред.), <b>um / uma</b> (неопред.).<br>• Слияние предлогов: <b>em + o = no</b> (в), <b>de + a = da</b> (из/от).",
+                tab: "3. Магазин и Еда",
+                title: "Модуль 3: Покупки, еда и вопросы",
+                grammar: `<b>Грамматика А1 (Вопросы и цены):</b><br>
+• <b>Вопросительные слова:</b> <i>quanto</i> (сколько?), <i>onde</i> (где?), <i>quando</i> (когда?).<br>
+• <b>Основные действия:</b> <i>querer</i> (хотеть), <i>comprar</i> (покупать), <i>comer</i> (есть), <i>beber</i> (пить).<br>
+• <b>Характеристики:</b> дорогой (caro), дешевый (barato), хороший (bom), плохой (ruim).`,
                 phrases: [
-                    { pt: "Quanto custa isso?", ru: "Сколько это стоит?" },
-                    { pt: "Tem frutas frescas hoje?", ru: "Сегодня есть свежие фрукты?" },
-                    { pt: "Eu quero meio quilo de queijo", ru: "Я хочу полкило сыра" },
-                    { pt: "Vou pagar no cartão de crédito", ru: "Я оплачу кредитной картой" },
-                    { pt: "Pode ser no Pix?", ru: "Можно оплатить по Pix?" }
+                    { pt: "Quanto custa isto?", tr: "куа́нту ку́ста и́шту?", ru: "Сколько это стоит?" },
+                    { pt: "Eu quero comprar pão de queijo.", tr: "э́у ке́ру компра́р па́ун ди ке́йжу", ru: "Я хочу купить сырный хлеб." },
+                    { pt: "Tem frutas frescas?", tr: "тэ́йн фру́таш фре́шкаш?", ru: "Есть свежие фрукты?" },
+                    { pt: "Pode ser no Pix?", tr: "по́де се́р ну пикс?", ru: "Можно оплатить через Pix?" }
                 ]
             },
             {
-                tab: "4. Город и Кафе",
-                title: "Модуль 4: В городе и ресторане",
-                grammar: "<b>Грамматика А2:</b><br>• Вопросы: <b>Onde?</b> (Где?), <b>Como?</b> (Как?), <b>Quanto?</b> (Сколько?).<br>• Вежливая форма: <i>Eu gostaria de...</i> (Я бы хотел/а...).",
+                tab: "4. Время и Числа",
+                title: "Модуль 4: Числа, время и будущее",
+                grammar: `<b>Грамматика А1 (Время и планы):</b><br>
+• <b>Числа:</b> от 0 до 100.<br>
+• <b>Дни недели:</b> segunda-feira, terça-feira и т.д.<br>
+• <b>Ближайшее будущее (Ir + инфинитив):</b> <i>vou comprar</i> (во́у компра́р — я собираюсь купить), <i>vai trabalhar</i> (он/она собирается работать).`,
                 phrases: [
-                    { pt: "Onde fica a farmácia mais próxima?", ru: "Где ближайшая аптека?" },
-                    { pt: "Uma mesa para dois, por favor", ru: "Столик на двоих, пожалуйста" },
-                    { pt: "Eu gostaria de um café com leite", ru: "Я бы хотел(а) кофе с молоком" },
-                    { pt: "A conta, por favor", ru: "Счет, пожалуйста" },
-                    { pt: "Muito obrigada!", ru: "Большое спасибо! (от женщины)" }
+                    { pt: "Que horas são?", tr: "ке о́раш са́ун?", ru: "Который час?" },
+                    { pt: "São duas horas da tarde.", tr: "са́ун ду́аш о́раш да та́рди", ru: "Сейчас два часа дня." },
+                    { pt: "Hoje é segunda-feira.", tr: "о́жи э сегу́нда фе́йра", ru: "Сегодня понедельник." },
+                    { pt: "Amanhã eu vou estudar português.", tr: "аманя́ э́у во́у штуда́р португе́ш", ru: "Завтра я буду (собираюсь) учить португальский." }
                 ]
             }
         ];
@@ -222,6 +238,7 @@
                             <div class="word-item">
                                 <div>
                                     <div class="pt-word">${p.pt}</div>
+                                    <div class="transcription">[ ${p.tr} ]</div>
                                     <div class="ru-word">${p.ru}</div>
                                 </div>
                                 <button class="speak-btn" onclick="speak('${p.pt.replace(/'/g, "\\'")}')">🔊</button>
